@@ -1,0 +1,6 @@
+host: 192.168.1.109
+port: 8086
+username: !secret influxdb_username
+password: !secret influxdb_password
+database: HA_DB
+max_retries: 3

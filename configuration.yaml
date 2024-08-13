@@ -1,0 +1,49 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 192.168.1.175
+    - 192.168.1.103
+
+influxdb: !include influxdb.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+sensor: !include sensors.yaml
+template: !include templates.yaml
+zone: !include zones.yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+    language: "sv"
+
+# Notification group - bådas telefoner
+
+notify:
+  - platform: group
+    name: "both_phones"
+    services:
+      - service: mobile_app_pixel_7_pro
+      - service: mobile_app_iphone
+
+# Telegram
+
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_token
+    allowed_chat_ids:
+      - x
+
+wake_on_lan:
+
+#### Used for Roborock map card ####
+# Rums-id nedervåning: [[16, '230001055629'], [17, '230001058358'], [18, '230001058359'], [19, '230001058360'], [20, '230001058361']]
+
+

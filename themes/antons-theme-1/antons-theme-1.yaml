@@ -1,0 +1,37 @@
+### Dashboard theme for "Fancy Mobile Dash"
+# Based on https://coolors.co/283618-93987c-fefae0-dda15e-bc6c25
+
+Antons-theme-1:
+  # Fonts
+  primary-font-family: "Montserrat"
+  paper-font-common-base_-_font-family: "var(--primary-font-family)"
+  paper-font-common-code_-_font-family: "var(--primary-font-family)"
+  paper-font-body1_-_font-family: "var(--primary-font-family)"
+  paper-font-subhead_-_font-family: "var(--primary-font-family)"
+  paper-font-headline_-_font-family: "var(--primary-font-family)"
+  paper-font-caption_-_font-family: "var(--primary-font-family)"
+  paper-font-title_-_font-family: "var(--primary-font-family)"
+  ha-card-header-font-family:
+    "var(--primary-font-family)"
+
+    # Text
+  text-color: "var(--text)"
+  primary-text-color: "var(--text-color)"
+  text-primary-color: "var(--text-color)"
+  accent-text-color: "var(--dark_green)"
+  primary-color: "var(--accent-color)"
+
+  # Main colors
+  base: "#283618"
+  base-light: "#93987C"
+  text: "#FEFAE0"
+  accent: "#DDA15E"
+  accent-secondary: "#BC6C25"
+
+  # Gradients
+
+  orange_to_gold: "linear-gradient(45deg, rgba(161,78,43,1) 0%, rgba(226,192,68,1) 100%),rgb(161,78,43)"
+
+  # Background
+
+  primary-background-color: "var(--base)"

@@ -1,0 +1,100 @@
+all_lights_off:
+  alias: Turn off lights in all areas
+  sequence:
+  - data: {}
+    target:
+      floor_id:
+      - nedervaning
+      - ovanvaning
+      - utomhus
+    action: light.turn_off
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      floor_id:
+      - utomhus
+      - ovanvaning
+      - nedervaning
+  icon: mdi:alarm-light-off-outline
+  mode: single
+turn_off_lights_downstairs:
+  alias: Turn off lights downstairs
+  sequence:
+  - service: light.turn_off
+    data: {}
+    target:
+      floor_id: nedervaning
+  mode: single
+  icon: mdi:lightbulb-multiple-off-outline
+find_antons_phone:
+  alias: Find Antons phone
+  sequence:
+  - service: notify.mobile_app_pixel_7_pro
+    data:
+      message: Här är jag!
+      data:
+        priority: high
+        channel: alarm_stream
+  mode: single
+  icon: fas:mobile-screen
+find_kajsas_phone:
+  alias: Find phone
+  sequence:
+  - service: notify.mobile_app_iphone
+    data:
+      data:
+        push:
+          sound:
+            name: alarm
+            critical: 1
+            volume: 1
+      message: Hej
+  mode: single
+  icon: fas:mobile-screen
+clean_kitchen:
+  alias: Clean Kitchen
+  sequence:
+  - service: vacuum.send_command
+    data:
+      command: app_segment_clean
+      params:
+      - segments:
+        - 17
+      - repeats: 1
+    target:
+      entity_id: vacuum.roborock_s6_pure
+  mode: single
+  icon: mdi:robot-vacuum
+media_player_vardagsrum_play:
+  alias: Media Player Vardagsrum Play
+  sequence:
+  - service: media_player.media_play
+    data: {}
+    target:
+      entity_id: media_player.vardagsrum_2
+  mode: single
+media_player_vardagsrum_pause:
+  alias: Media Player Vardagsrum Pause
+  sequence:
+  - service: media_player.media_pause
+    data: {}
+    target:
+      entity_id: media_player.vardagsrum_2
+  mode: single
+media_player_vardagsrum_volume_up:
+  alias: Media Player Vardagsrum Volume up
+  sequence:
+  - service: media_player.volume_up
+    data: {}
+    target:
+      entity_id: media_player.vardagsrum_2
+  mode: single
+media_player_vardagsrum_volume_down:
+  alias: Media Player Vardagsrum Volume down
+  sequence:
+  - service: media_player.volume_down
+    data: {}
+    target:
+      entity_id: media_player.vardagsrum_2
+  mode: single

@@ -1,0 +1,158 @@
+########## SENSORS #########
+
+### Visa tid och datum ###
+- platform: time_date
+  display_options:
+    - "time"
+    - "date"
+    - "date_time"
+    - "date_time_utc"
+    - "time_date"
+
+
+  ### Översätt veckodagar till svenska ###
+- platform: template
+  sensors:
+    current_weekday_translation:
+      friendly_name: "Current Weekday Translation"
+      value_template: >
+        {% set current_weekday = now().strftime('%A') %}
+        {% if current_weekday == "Monday" %}
+          Måndag
+        {% elif current_weekday == "Tuesday" %}
+          Tisdag
+        {% elif current_weekday == "Wednesday" %}
+          Onsdag
+        {% elif current_weekday == "Thursday" %}
+          Torsdag
+        {% elif current_weekday == "Friday" %}
+          Fredag
+        {% elif current_weekday == "Saturday" %}
+          Lördag
+        {% elif current_weekday == "Sunday" %}
+          Söndag
+        {% endif %}
+
+- platform: sjofartsverket_viva
+  name: Vind
+  region: x
+  scan_interval: 30
+- platform: template
+  sensors:
+    vind2:
+      friendly_name: "Byvind"
+      entity_id: sensor.vind
+      unit_of_measurement: "m/s"
+      value_template: "{{ state_attr('sensor.vind', 'Wind max') }}"
+
+- platform: template
+  sensors:
+    utetemperatur:
+      friendly_name: "Utetemp"
+      entity_id: weather.x
+      unit_of_measurement: "°C"
+      value_template: "{{ state_attr('weather.x', 'temperature') }}"
+
+  ### Pollenprognos Gräs
+- platform: template
+  sensors:
+    pollenhalt_grass:
+      friendly_name: "Pollenhalt Gräs"
+      value_template: >
+        {% set pollen_value = states('sensor.pollen_gras') | float %}
+        {% if pollen_value == 0 %}
+          Inget
+        {% elif pollen_value == 1 %}
+          Lite
+        {% elif pollen_value == 2 %}
+          Ganska lite
+        {% elif pollen_value == 3 %}
+          En del
+        {% elif pollen_value == 4 %}
+          Ganska mycket
+        {% elif pollen_value == 5 %}
+          Mycket
+        {% elif pollen_value == 6 %}
+          Väldigt mycket
+        {% elif pollen_value == 7 %}
+          Extremt mycket
+        {% endif %}
+
+  ### Pollenprognos Björk
+- platform: template
+  sensors:
+    pollenhalt_bjork:
+      friendly_name: "Pollenhalt Björk"
+      value_template: >
+        {% set pollen_value = states('sensor.pollen_bjork') | float %}
+        {% if pollen_value == 0 %}
+          Inget
+        {% elif pollen_value == 1 %}
+          Lite
+        {% elif pollen_value == 2 %}
+          Ganska lite
+        {% elif pollen_value == 3 %}
+          En del
+        {% elif pollen_value == 4 %}
+          Ganska mycket
+        {% elif pollen_value == 5 %}
+          Mycket
+        {% elif pollen_value == 6 %}
+          Väldigt mycket
+        {% elif pollen_value == 7 %}
+          Extremt mycket
+        {% endif %}
+
+- platform: rest
+  resource: https://services.viva.sjofartsverket.se:8080/output/vivaoutputservice.svc/vivastation/xx
+  name: "VIVA Vattenstånd och Vattentemp"
+  value_template: "{{ value_json.GetSingleStationResult.Samples[1].Value }}"
+  unit_of_measurement: "°C"
+  scan_interval: 300
+  json_attributes:
+    - GetSingleStationResult
+
+- platform: template
+  sensors:
+    total_lights_on:
+      value_template: >
+        {{ states.light | rejectattr('attributes.entity_id', 'defined') | selectattr('state', 'eq', 'on') | list | count }}
+
+- platform: template
+  sensors:
+    vardagsrum_lights_on_count:
+      value_template: >
+        {{ states.light.vardagsrum | rejectattr('attributes.entity_id', 'defined') | selectattr('state', 'eq', 'on') | list | count }}
+
+- platform: resrobot
+  key: !secret rr_api_key
+  fetch_interval: 1
+  departures:
+    - stop_id: 740000110
+      name: x C
+      sensors: 2
+      time_format: "%H:%M"
+      filter:
+        - type: contains
+          direction: "x Centralstation"
+          means_of_transport: "2"
+
+- platform: zwift
+  username: !secret zwift_username
+  password: !secret zwift_password
+
+- platform: template
+  sensors: 
+    senaste_dammsugning:
+      value_template: >
+        {% set last_cleaned_time = as_timestamp(states('sensor.roborock_s6_pure_sluttid_for_senaste_stadningen')) %}
+        {% set now = as_timestamp(now()) %}
+        {% set time_diff = now - last_cleaned_time %}
+        {% set hours = (time_diff / 3600) | int %}
+        {% set days = (hours / 24) | int %}
+        {% set remaining_hours = hours % 24 %}
+        {% if days >= 1 %}
+          {{ days }} day{{ 's' if days > 1 else '' }} {{ remaining_hours }} hour{{ 's' if remaining_hours > 1 else '' }}
+        {% else %}
+          {{ hours }} hour{{ 's' if hours > 1 else '' }}
+        {% endif %}

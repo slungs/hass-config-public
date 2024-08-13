@@ -1,0 +1,46 @@
+- sensors:
+    next_train_to_x:
+      friendly_name: "Time Until Next Train to x"
+      unit_of_measurement: "minutes"
+      availability_template: "{{ 'sensor.x' | has_value }}"
+      value_template: >
+        {% set s = states('sensor.x') | today_at %}
+        {% set t = now() %}
+        {% if s < t %}
+          {% set s = s + timedelta(days=1) %}
+        {% endif %}
+        {{ (t - now()).total_seconds() / 60 }}
+
+    second_next_train_to_x:
+      friendly_name: "Time Until Second Next Train to x"
+      unit_of_measurement: "minutes"
+      availability_template: "{{ 'sensor.x1' | has_value }}"
+      value_template: >
+        {% set s = states('sensor.x1') | today_at %}
+        {% set t = now() %}
+        {% if s < t %}
+          {% set s = s + timedelta(days=1) %}
+        {% endif %}
+        {{ (t - now()).total_seconds() / 60 }}
+
+- sensor:
+    weather_translation:
+      friendly_name: "Current Weather Translation"
+      value_template: >
+        {% if states.weather.x.state == "rainy" %}
+          Regn
+        {% elif states.weather.x.state == "sunny" %}
+          Solsken
+        {% elif states.weather.x.state == "cloudy" %}
+          Molnigt
+        {% elif states.weather.x.state == "partlycloudy" %}
+          Halvklart 
+        {% elif states.weather.x.state == "fog" %}
+          Dimmigt 
+        {% elif states.weather.x.state == "snowy" %}
+          Snö 
+        {% elif states.weather.x.state == "snowy-rainy" %}
+          Snöblandat regn
+        {% else %}
+          {{ states('weather.x') }}
+        {% endif %}

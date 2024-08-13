@@ -12,7 +12,11 @@ Another big guideline that I live by is that the home should still *work* if eve
 ## Tools
 
 ### Connectivity
+
 ### Cameras
+- [Reolink RLC-410](https://reolink.com/product/rlc-410/) - Some people are reporting issues using Reolink cameras with Frigate and thus they are not recommended hardware for Frigate. However, I personally never had any problems and it's been very stable for me. Powered over PoE.
+- [TP-Link C200](https://www.tp-link.com/se/home-networking/cloud-camera/tapo-c200/) - Although an indoor camera I had one mounted outside under a roof for over a year, and it seems to be doing fine. However, I don't recommend using wifi cameras as it can occasionally drop out.
+
 ### Sensors
 
 ## Services

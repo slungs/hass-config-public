@@ -1,0 +1,2 @@
+views:
+  - !include view1.yaml

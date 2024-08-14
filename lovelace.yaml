@@ -1,0 +1,9 @@
+mode: storage
+# Add yaml dashboards
+dashboards:
+  lovelace-yaml:
+    mode: yaml
+    title: Test YAML Dashboard
+    icon: mdi:script
+    show_in_sidebar: true
+    filename: ui/test/test-yaml-dashboard.yaml

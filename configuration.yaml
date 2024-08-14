@@ -17,6 +17,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 sensor: !include sensors.yaml
 zone: !include zones.yaml
+lovelace: !include lovelace.yaml
 
 # Text to speech
 tts:
@@ -38,10 +39,9 @@ telegram_bot:
   - platform: broadcast
     api_key: !secret telegram_token
     allowed_chat_ids:
-      - x
+      - 1999256073
 
 wake_on_lan:
-
 #### Used for Roborock map card ####
 # Rums-id nedervåning: [[16, '230001055629'], [17, '230001058358'], [18, '230001058359'], [19, '230001058360'], [20, '230001058361']]
 

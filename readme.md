@@ -57,17 +57,12 @@ I use a Dell OptiPlex 9020 SFF, where Home Assistant runs in a VM within Proxmox
 - Studio Code Server
 ### Integrations
 - AccuWeather
-- Alarmo
-- Blitzortung
 - Browser mod
 - Custom Panel
 - Electricity Maps
 - EspHome
 - File
-- FontAwesome
-- Frigate
 - Fully Kiosk Browser
-- Garmin Connect
 - Glances
 - Google Calendar
 - Google Cast
@@ -76,37 +71,67 @@ I use a Dell OptiPlex 9020 SFF, where Home Assistant runs in a VM within Proxmox
 - Google Translate TTS
 - Goove lights local
 - HACS
-- HASS.Agent
 - Home Connect
 - InfluxDB
 - Local To-do
-- Lynk & Co
 - Met.no
 - MQTT
 - Ping (ICMP)
-- Pollenprognos
 - Proximity
-- Proxmox VE
 - Radio Browser
-- resrobot
 - RESTful
 - Roborock
 - Samsung Smart TV
 - Shelly
 - Speedtest.net
-- Spook
 - Spotify
-- Strava
 - Sun
 - System Monitor
 - Tasmota
 - Telegram bot
 - Todoist
 - Uptime
-- Watchman
 - Waze Travel Time
 - WiZ
 - Workday
-- Zwift
 ### Custom Integrations
-
+- Alarmo
+- Sonos Cloud
+- Sjöfartsverket ViVa
+- Zwift Sensors
+- Garbage Collection
+- Blitzortung.org Lightning Detector
+- Watchman
+- ResRobot
+- Proxmox VE
+- Frigate
+- Strava
+- Lynk & Co
+- Garmin Connect
+- HASS.Agent
+- browser_mod
+- Pollenprognos
+- Swedish Calendar
+- EdgeOS
+- fontawesome
+- Spook
+### Custom Frontend Cards & Tools
+- Weather Card
+- Slider Button Card
+- Atomic Calendar Revive
+- Tabbed card
+- mini-graph-card
+- Vacuum Card
+- Kiosk Mode
+- layout-card
+- Time Picker Card
+- Light Entity Card
+- Banner Card
+- Mini Media Player
+- Bubble Card
+- Frigate Card
+- Power Flow Card Plus
+- Mushroom
+- apexcharts-card
+- button-card
+- card-mod

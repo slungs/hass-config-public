@@ -39,7 +39,7 @@ telegram_bot:
   - platform: broadcast
     api_key: !secret telegram_token
     allowed_chat_ids:
-      - 1999256073
+      - x
 
 wake_on_lan:
 #### Used for Roborock map card ####

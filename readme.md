@@ -56,6 +56,57 @@ I use a Dell OptiPlex 9020 SFF, where Home Assistant runs in a VM within Proxmox
 - Samba share
 - Studio Code Server
 ### Integrations
-- 
+- AccuWeather
+- Alarmo
+- Blitzortung
+- Browser mod
+- Custom Panel
+- Electricity Maps
+- EspHome
+- File
+- FontAwesome
+- Frigate
+- Fully Kiosk Browser
+- Garmin Connect
+- Glances
+- Google Calendar
+- Google Cast
+- Google Sheets
+- Google Tasks
+- Google Translate TTS
+- Goove lights local
+- HACS
+- HASS.Agent
+- Home Connect
+- InfluxDB
+- Local To-do
+- Lynk & Co
+- Met.no
+- MQTT
+- Ping (ICMP)
+- Pollenprognos
+- Proximity
+- Proxmox VE
+- Radio Browser
+- resrobot
+- RESTful
+- Roborock
+- Samsung Smart TV
+- Shelly
+- Speedtest.net
+- Spook
+- Spotify
+- Strava
+- Sun
+- System Monitor
+- Tasmota
+- Telegram bot
+- Todoist
+- Uptime
+- Watchman
+- Waze Travel Time
+- WiZ
+- Workday
+- Zwift
 ### Custom Integrations
 

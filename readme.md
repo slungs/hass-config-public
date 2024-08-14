@@ -45,6 +45,17 @@ I use a Dell OptiPlex 9020 SFF, where Home Assistant runs in a VM within Proxmox
 
 ## Services
 ### Addons
+- Advanced SSH & Web Terminal - Used for SSH access.
+- ESPHome - Mostly used for experimentation. I used to do water usage monitoring with ESPHome and a magnet sensor, but it is not possilbe anymore since my meter was changed. 
+- Frigate - NVR for cameras, using AI detection.
+- Fusion - Dashboard addon. I mainly used this before sections was released in Core.
+- Glances - For hardware monitoring.
+- Home Assistant Google Drive Backup - Cloud backups.
+- Mosquitto Broker - For MQTT connectivity.
+- MQTT Explorer - Great tool for inspecting MQTT events.
+- Samba share
+- Studio Code Server
 ### Integrations
+- 
 ### Custom Integrations
 

@@ -128,7 +128,7 @@
   key: !secret rr_api_key
   fetch_interval: 1
   departures:
-    - stop_id: 740000110
+    - stop_id: x
       name: x C
       sensors: 2
       time_format: "%H:%M"
@@ -155,4 +155,55 @@
           {{ days }} day{{ 's' if days > 1 else '' }} {{ remaining_hours }} hour{{ 's' if remaining_hours > 1 else '' }}
         {% else %}
           {{ hours }} hour{{ 's' if hours > 1 else '' }}
+        {% endif %}
+
+- platform: template
+  sensors:
+    next_train_to_x:
+      friendly_name: "Next Train to x"
+      unit_of_measurement: "minutes"
+      availability_template: "{{ states('sensor.x_c_0') is not none }}"
+      value_template: >
+        {% set s = states('sensor.x_c_0') | today_at %}
+        {% set t = now() %}
+        {% if s < t %}
+          {% set s = s + timedelta(days=1) %}
+        {% endif %}
+        {{ ((s - t).total_seconds() / 60) | round(0) }}
+
+- platform: template
+  sensors:
+    next_train_to_x:
+      friendly_name: "Next Train to x"
+      unit_of_measurement: "minutes"
+      availability_template: "{{ states('sensor.x_c_1') is not none }}"
+      value_template: >
+        {% set s = states('sensor.x_c_1') | today_at %}
+        {% set t = now() %}
+        {% if s < t %}
+          {% set s = s + timedelta(days=1) %}
+        {% endif %}
+        {{ ((s - t).total_seconds() / 60) | round(0) }}
+
+- platform: template
+  sensors:
+    weather_translation:
+      friendly_name: "Current Weather Translation"
+      value_template: >
+        {% if states.weather.forecast_x.state == "rainy" %}
+          Regn
+        {% elif states.weather.forecast_x.state == "sunny" %}
+          Solsken
+        {% elif states.weather.forecast_x.state == "cloudy" %}
+          Molnigt
+        {% elif states.weather.forecast_x.state == "partlycloudy" %}
+          Halvklart 
+        {% elif states.weather.forecast_x.state == "fog" %}
+          Dimmigt 
+        {% elif states.weather.forecast_x.state == "snowy" %}
+          Snö 
+        {% elif states.weather.forecast_x.state == "snowy-rainy" %}
+          Snöblandat regn
+        {% else %}
+          {{ states('weather.forecast_x') }}
         {% endif %}

@@ -1,0 +1,30 @@
+title: Overview
+id: overview
+path: overview
+icon: mdi:view-dashboard
+type: custom:grid-layout
+
+layout:
+  grid-template-columns: repeat(8, 12.5%);
+  grid-template-rows: auto
+  grid-gap-left: 10px
+  grid-gap-right: 10px
+  grid-template-areas: |
+    "a1 a2 . . . . . ."
+    ". . . . . . . ."
+
+cards:
+  - type: markdown
+    title: Dashboard
+    content: >
+      Welcome to your **dashboard**.
+    view_layout:
+      grid-area: a1
+
+  # Example usage of sensor_square_last_updated
+  - type: custom:button-card
+    template: sensor_square_last_updated
+    view_layout:
+      grid-area: a2
+    name: Front Door
+    entity: binary_sensor.hall_dorrsensor_contact

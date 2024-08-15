@@ -1,0 +1,11 @@
+# View tab title.
+title: Example
+id: Example
+path: example
+icon: mdi:lightbulb
+cards:
+  # The markdown card will render markdown text.
+  - type: markdown
+    title: Dashboard
+    content: >
+      Welcome to your **dashboard**.

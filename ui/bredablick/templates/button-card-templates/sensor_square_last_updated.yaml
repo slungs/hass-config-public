@@ -1,0 +1,22 @@
+# Shows when the used entity was last updated as a label
+
+template: sensor_square
+triggers_update: all
+label: |
+  [[[
+    const lastChanged = new Date(entity.last_changed);
+    const now = new Date();
+    const secondsAgo = Math.floor((now - lastChanged) / 1000);
+    if (secondsAgo < 60) {
+      return `${secondsAgo} seconds ago`;
+    } else if (secondsAgo < 3600) {
+      const minutesAgo = Math.floor(secondsAgo / 60);
+      return `${minutesAgo} minutes ago`;
+    } else if (secondsAgo < 86400) {
+      const hoursAgo = Math.floor(secondsAgo / 3600);
+      return `${hoursAgo} hours ago`;
+    } else {
+      const daysAgo = Math.floor(secondsAgo / 86400);
+      return `${daysAgo} days ago`;
+    }
+  ]]]

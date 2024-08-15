@@ -1,2 +1,2 @@
 views:
-  - !include view1.yaml
+  - !include views/view1.yaml

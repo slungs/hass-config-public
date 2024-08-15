@@ -1,0 +1,42 @@
+# For now, design to be used in a 8 column grid.
+# TODO: Handle scaling in a better way
+# TODO: Add variables for easier config
+
+sensor_square:
+  aspect_ratio: 1/1
+  show_state: true
+  show_icon: true
+  size: 100%
+  show_label: true
+  styles:
+    grid:
+      - grid-template-areas: '"s s" "l l" ". ." "n i" ". ."'
+      - grid-template-columns: 70% 1fr
+      - grid-template-rows: 30% 10% 10% 40% 10%
+      - grid-gap: 0.5rem
+    card:
+      - border: none
+      - border-radius: 0px
+      - background: rgb(20, 20, 20)
+    name:
+      - justify-self: start
+      - padding-left: 15%
+      - padding-bottom: 10%
+      - align-self: end
+      - font-size: 1.3rem
+      - font-weight: bold
+    icon:
+      - justify-self: end
+      - align-self: start
+      - color: grey
+    state:
+      - justify-self: start
+      - padding-left: 10%
+      - padding-top: 5%
+      - align-self: end
+      - font-size: 1.8rem
+    label:
+      - justify-self: start
+      - padding-left: 10%
+      - align-self: end
+      - font-size: 1.3rem

@@ -1,0 +1,3 @@
+# How to use
+
+My idea with the button card templates (for now, at least) is that the most granular template should always be used (templating heirarchy). For example, sensor_square is referenced within sensor_square_last_updated, so that when you are applying a card to the dashboard, you should only need to use sensor_square_last_updated, because it contains the core elements of sensor_square by using that in its own template.

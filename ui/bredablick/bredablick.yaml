@@ -1,0 +1,4 @@
+views:
+  - !include views/bredablick-overview.yaml
+
+button_card_templates: !include_dir_merge_named templates/button-card-templates/
